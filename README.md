@@ -5,20 +5,22 @@ The Employee Management System is a comprehensive microservices-based applicatio
 
 ## Project Services Architecture
 
-### 1. Service Discovery & Configuration
+### 1. Service Discovery Service
 - **Eureka Server**: Enables service registration and discovery
+
+### 2. Configuration Service (Config Server)
 - **Spring Cloud Config Server**: Centralized configuration management
 
-### 2. API Gateway
+### 3. API Gateway
 - **Spring Cloud Gateway**: Centralized routing and authentication gateway
 
-### 3. Authentication Service
+### 4. Authentication Service
 - **Key Features**:
   * User Management System
   * Role-Based Access Control (RBAC)
   * JWT Token Generation for secure authentication
 
-### 4. Employee Service
+### 5. Employee Service
 #### Core CRUD Operations
 Comprehensive management of employee data with sophisticated capabilities:
 
@@ -74,7 +76,7 @@ Comprehensive management of employee data with sophisticated capabilities:
   * Sorting
   * Export options (CSV/Excel)
 
-### 5. Department Service
+### 6. Department Service
 #### Department Management
 - Comprehensive department lifecycle management
 - Detailed department attribute tracking:
@@ -102,19 +104,19 @@ Comprehensive management of employee data with sophisticated capabilities:
   * Drill-down exploration
   * Permissions-based access
 
-### 6. Notification Service
+### 7. Notification Service
 - Real-time communication infrastructure:
   * WebSocket updates
   * Email notifications
   * Internal messaging system
 
-### 7. Reporting Service
+### 8. Reporting Service
 - Advanced analytics platform:
   * Performance metrics tracking
   * Statistical dashboards
   * Comprehensive organizational insights
 
-### 8. Infrastructure Service
+### 9. Infrastructure Service
 - Observability and monitoring:
   * Distributed tracing (Zipkin)
   * Centralized logging (ELK Stack)
