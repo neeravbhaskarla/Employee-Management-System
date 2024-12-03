@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/neeravbhaskarla/Employee-Management-System/tree/master/configfiles
+          username:
+          password:
+          clone-on-start: true
+
+server:
+  port: 8888
