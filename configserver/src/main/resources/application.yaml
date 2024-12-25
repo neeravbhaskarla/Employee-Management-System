@@ -5,10 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/neeravbhaskarla/Employee-Management-System/tree/master/configfiles
-          username:
-          password:
+          uri: https://github.com/neeravbhaskarla/emporgconfigfiles
           clone-on-start: true
-
 server:
   port: 8888
