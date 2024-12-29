@@ -7,5 +7,6 @@ spring:
         git:
           uri: https://github.com/neeravbhaskarla/emporgconfigfiles
           clone-on-start: true
+
 server:
   port: 8888
