@@ -3,3 +3,7 @@ spring:
         name: employeeservice
     config:
         import: "configserver:"
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true

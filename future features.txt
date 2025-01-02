@@ -1,0 +1,104 @@
+Employee [icon: user] {
+  employeeId string pk
+  name string
+  email string
+  contact string
+  department Department
+  role string 
+  designation Designation
+  joiningDate LocalDate
+  salary double 
+  isActive boolean
+  profilePictureUrl string
+  certification List(string)
+  projectHistories List(ProjectHistory)
+  peformanceReviews List(PeformanceReview)
+  emergencyContacts List(EmergencyContact)
+  accessControlProfile AccessControlProfile
+}
+
+EmployeeSearchCriteria [icon: search] {
+  id string
+  email string
+  name string
+  department Department
+  role string
+  isActive boolean
+  minSalary double
+  maxSalary double
+  joiningDate LocalDate
+}
+
+ProjectHistory [icon: history] {
+  projectId string
+  projectName string
+  startDate LocalDate
+  endDate LocalDate
+  role string
+}
+
+PerformanceReview [icon: prefect] {
+  reviewDate LocalDate
+  reviewer string
+  comments string 
+  rating double
+}
+
+EmergencyContact [icon: phone] {
+  name string
+  relationship string
+  contact string
+}
+
+AccessControlProfile [icon: access] {
+  canSelfUpdate boolean
+  canManagerEdit boolean
+  canHRManage boolean
+}
+
+Department [icon: office] {
+  departmentId string
+  name string
+  leader Employee
+  budget double 
+  location string
+  teams List(Team)
+}
+
+Team [icon: teams] {
+  teamId string
+  name string
+  leader Employee
+}
+
+OrganizationHierarchy [icon: topic]{
+  departmentId string
+  roleRelationships Map(string, List(string))
+  hierarchyTree List(HierarchyNode)
+}
+
+HierarchyNode [icon: node] {
+  id string
+  name string
+  children List(HierarchyNode)
+}
+Designation [icon: user]{
+    DEVELOPER
+    ENGINEER
+    HR
+    MANAGER
+    DIRECTOR
+    VICEPRESIDENT
+    ADMIN
+}
+
+OrganizationHierarchy.hierarchyTree <> HierarchyNode
+Department.leader <> Employee 
+Department.teams <> Team 
+Employee.department <> Department 
+Employee.designation <> Designation 
+Employee.projectHistories <> ProjectHistory 
+Employee.peformanceReviews <> PerformanceReview 
+Employee.emergencyContacts <> EmergencyContact 
+Employee.accessControlProfile <> AccessControlProfile 
+Team.leader <> Employee

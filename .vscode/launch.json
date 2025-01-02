@@ -8,7 +8,8 @@
             "mainClass": "emporg.discoveryservice.DiscoveryserviceApplication",
             "projectName": "discoveryservice",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=55597 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=discoveryservice"
         },
         {
             "type": "java",
@@ -29,7 +30,8 @@
             "mainClass": "emporg.configserver.ConfigserverApplication",
             "projectName": "configserver",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=55565 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=configserver"
         },
         {
             "type": "java",
@@ -37,6 +39,16 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "emporg.employee_service.EmployeeServiceApplication",
+            "projectName": "employeeservice",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EmployeeServiceApplication<employeeservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "emporg.employeeservice.EmployeeServiceApplication",
             "projectName": "employeeservice",
             "args": "",
             "envFile": "${workspaceFolder}/.env"

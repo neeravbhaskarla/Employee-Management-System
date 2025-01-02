@@ -2,8 +2,10 @@ package emporg.employeeservice.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import emporg.employeeservice.constants.EmployeeConstants;
 import emporg.employeeservice.dto.EmployeeDTO;
-import emporg.employeeservice.service.EmployeeService;
+import emporg.employeeservice.service.EmployeeServiceImpl;
+import emporg.employeeservice.support.ResponseMessage;
 
 import java.util.List;
 import java.util.Map;
@@ -19,47 +21,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RestController
 @RequestMapping("/api/v1/employees")
 public class EmployeeController {
+
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     // Create Operation
     @PostMapping
-    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO createdEmployee = employeeService.createEmployee(employeeDTO);
-        return ResponseEntity.ok(createdEmployee);
+    public ResponseEntity<ResponseMessage> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeDTO employeeId = employeeService.createEmployee(employeeDTO);
+        return ResponseEntity.ok(new ResponseMessage(employeeId, EmployeeConstants.EMPLOYEE_CREATED));
     }
 
     // Read Operations
-
-    // Get an individual employee by ID or Email
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable String id) {
+    public ResponseEntity<ResponseMessage> getEmployeeById(@PathVariable String id) {
         EmployeeDTO employee = employeeService.getEmployeeById(id);
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.ok(new ResponseMessage(employee, EmployeeConstants.EMPLOYEE_RETRIEVED));
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<ResponseMessage> getEmployeeByEmail(@PathVariable String email) {
+        EmployeeDTO employee = employeeService.getEmployeeByEmail(email);
+        return ResponseEntity.ok(new ResponseMessage(employee, EmployeeConstants.EMPLOYEE_RETRIEVED));
     }
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@RequestParam(required = false) Map<String, String> filters) {
+    public ResponseEntity<ResponseMessage> getAllEmployees(
+            @RequestParam(required = false) Map<String, String> filters) {
         List<EmployeeDTO> employees = employeeService.getAllEmployees(filters);
-        return ResponseEntity.ok(employees);
+        return ResponseEntity.ok(new ResponseMessage(employees, EmployeeConstants.EMPLOYEE_RETRIEVED));
     }
 
     // Update Operation
-    @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable String id, @RequestBody EmployeeDTO employeeDTO) {
-        EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
-        return ResponseEntity.ok(updatedEmployee);
+    @PutMapping
+    public ResponseEntity<ResponseMessage> updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeDTO updatedEmployee = employeeService.updateEmployee(employeeDTO);
+        return ResponseEntity.ok(new ResponseMessage(updatedEmployee, EmployeeConstants.EMPLOYEE_UPDATED));
     }
 
     // Delete Operation
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable String id) {
-        employeeService.deleteEmployee(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<ResponseMessage> deleteEmployee(@PathVariable String id) {
+        EmployeeDTO employee = employeeService.deleteEmployee(id);
+        return ResponseEntity.ok(new ResponseMessage(employee, EmployeeConstants.EMPLOYEE_DELETED));
     }
-    
+
 }
