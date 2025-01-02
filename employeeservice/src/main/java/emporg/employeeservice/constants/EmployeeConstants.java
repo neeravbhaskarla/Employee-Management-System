@@ -1,7 +1,5 @@
 package emporg.employeeservice.constants;
 
-import emporg.employeeservice.support.Designation;
-
 public class EmployeeConstants {
     public static final String EMPLOYEE_NOT_FOUND = "Employee not found";
     public static final String EMPLOYEE_DELETED = "Employee deleted successfully";
@@ -13,5 +11,4 @@ public class EmployeeConstants {
     public static final String EMPLOYEE_ACTIVATED = "Employee activated successfully";
     public static final String EMPLOYEE_DEACTIVATED_ALREADY = "Employee already deactivated";
     public static final String EMPLOYEE_ACTIVATED_ALREADY = "Employee already activated";
-    public static final String INVALID_DESIGNATION = "Invalid designation should be one of the following: "+ Designation.values();
 }
