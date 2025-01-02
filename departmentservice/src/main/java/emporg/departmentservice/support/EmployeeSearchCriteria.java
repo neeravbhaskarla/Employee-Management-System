@@ -10,7 +10,7 @@ public class EmployeeSearchCriteria {
     private String id;
     private String email;
     private String name;
-    private Department department;
+    private String departmentId;
     private String role;
     private Boolean isActive;
     private Double minSalary;

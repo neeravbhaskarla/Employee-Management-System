@@ -8,6 +8,6 @@ import lombok.Data;
 public class Team {
     private String teamId;
     private String name;
-    private Employee leader;
+    private String leader;
     private List<String> members;
 }
